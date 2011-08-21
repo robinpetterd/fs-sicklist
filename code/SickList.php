@@ -3,66 +3,64 @@
 class SickList extends Event {
  
    //static $api_access = true;
-    
-	function canView() { return true; }
+   function canView() { return true; }
    
     static $db = array(
 	 'LineNumber' => 'Int', 
 	 'SickListId' => 'Int',
 	 'Ship' => 'Text',
-        Voyage Number
-        Voyage ID
-        Transport Gender
-        Day of Departure
-        Month of Departure
-        Year of Departure
-        Period of Departure
-        Date Sailed (Bateson)
-        Sick List ID
-        Bateson Arrival Day
-        Bateson Arrival Month
-        Bateson Arrival Year
-        Bateson Arrival Date
-
-         'Length Voyage' => 'Int',  \\ SRC name Length Voyage
-         'Season sailed' => 'Text', \\ SRC name Season sailed
-         'Season Code' => 'Text', \\ SRC name Season Code
-         'Order' => 'Text', \\ SRC name Order
-         'On Day' => 'Text', \\ SRC name On Day
-         'On Month' => 'Text',\\ SRC name On Month
-         'On Year' => 'Text', \\ SRC name  On Year
-         'Date Entered on Sick List' => 'Text', \\ SRC name  Date Entered on Sick List
-         'Days lapse since sailing' => 'Text', \\ SRC name Days lapse since sailing
-         'Percentage voyage lapsed' => 'Text', \\ SRC name  Percentage voyage lapsed
-         'Forenames' => 'Text', \\ SRC name Forenames
-         'Name' => 'Text', \\ SRC name Name
-         'Age' => 'Text', \\ SRC name Age
-         'No. on the list' => 'Text', \\ SRC name No. on the list
-         'Case Notes' => 'Text', \\ SRC name Case Notes
-         'Quality' => 'Text', \\ SRC name Qualitt
-         'Status Code' => 'Text', \\ SRC name Status Code
-         'Trade' => 'Text', \\ SRC name Trade
-         'Disease or Wound' => 'Text', \\ SRC name Disease or Wound
-         'Diagnostic Interpretation' => 'Text', \\ SRC name Diagnostic Interpretation
-         'Disease Classification 1' => 'Text', \\ SRC name Disease Classification 1
-         'Disease 1 Code' => 'Text', \\ SRC name Disease 1 Code
-         'Disease Classification 2' => 'Text', \\ SRC name Disease Classification 2
-         'Disease 2 Code' => 'Text', \\ SRC name Disease 2 Code
-         'off Day' => 'Text', \\ SRC name off Day
-         'off Month' => 'Text', \\ SRC name off Month
-         'off Year' => 'Text', \\ SRC name off Year
-         'Date Discharged' => 'Text', \\ SRC name Date Discharged
-         'Days on sick List' => 'Text', \\ SRC name Days on sick List
-         'Est Days on Sick List' => 'Text', \\ SRC name Est Days on Sick List
-         'Days at sea till Death' => 'Text', \\ SRC name  Days at sea till Death
-         'Days at sea till Death percentage voyage' => 'Text', \\ SRC name ays at sea till Death percentage voyage
-         'How disposed of' => 'Text', \\ SRC name How disposed of
-         'Disposed code' => 'Text', \\ SRC name Disposed code
-         'Transcribers remarks' => 'Text', \\ SRC name Transcribers remarks
-         'Journal remarks' => 'Text', \\ SRC name Journal remarks
-         'Reference' => 'Text', \\ SRC name Reference
-         'JPEG no.' => 'Text', \\ SRC name JPEG No
-	 
+         'VoyageNumber' => 'Int', // SRC name  Voyage Number
+         'VoyageID =>' => 'Text', // SRC name Voyage ID
+         'TransportGender' => 'Int', // SRC name  Transport Gender  
+         'DayOfDeparture' => 'Int', // SRC name Day of Departure
+         'MonthOfDeparture' => 'Int', // SRC name Month of Departure
+         'YearOfDeparture' => 'Int', // SRC name Year of Departure
+         'PeriodOfDeparture' => 'Text', // SRC name Period of Departure
+         'DateSailedBateson' => 'Text', // SRC name Date Sailed (Bateson)
+         'SickListID' => 'Text', // SRC name   Sick List ID 
+         'BatesonArrivalDay' => 'Int', // SRC name  Bateson Arrival Day
+         'BatesonArrivalMonth' => 'Int', // SRC name Bateson Arrival Mont
+         'BatesonArrivalYear' => 'Int', // SRC name Bateson Arrival Year 
+         'BatesonArrivalDate' => 'Int', // SRC name  Bateson Arrival Date
+         'LengthVoyage' => 'Int',  // SRC name Length Voyage
+         'SeasonSailed' => 'Text', // SRC name Season sailed TODO - might need to NORMALISE
+         'SeasonCode' => 'Text', // SRC name Season Code 
+         'Order' => 'Int', // SRC name Order
+         'OnDay' => 'Int', // SRC name On Day
+         'OnMonth' => 'Int',// SRC name On Month
+         'OnYear' => 'Int', // SRC name  On Year
+         'DateEnteredOnSickList' => 'Text', // SRC name  Date Entered on Sick List
+         'DaysLapseSinceSailing' => 'Int', // SRC name Days lapse since sailing
+         'PercentageVoyageLapsed' => 'Int', // SRC name  Percentage voyage lapsed
+         'Forenames' => 'Text', // SRC name Forenames
+         'Name' => 'Text', // SRC name Name
+         'Age' => 'Text', // SRC name Age TODO - might need to add a field that deals with this as float
+         'NoOnTheList' => 'Int', // SRC name No. on the list
+         'CaseNotes' => 'Text', // SRC name Case Notes
+         'Quality' => 'Text', // SRC name Quality TODO - need to NORMALISE/LINK   
+         'StatusCode' => 'Text', // SRC name Status Code
+         'Trade' => 'Text', // SRC name Trade
+         'DiseaseOrWound' => 'Text', // SRC name Disease or Wound
+         'DiagnosticInterpretation' => 'Text', // SRC name Diagnostic Interpretation
+         'DiseaseClassification1' => 'Text', // SRC name Disease Classification 1
+         'Disease1Code' => 'Text', // SRC name Disease 1 Code
+         'DiseaseClassification2' => 'Text', // SRC name Disease Classification 2
+         'Disease2Code' => 'Text', // SRC name Disease 2 Code
+         'offDay' => 'Int', // SRC name off Day
+         'offMonth' => 'Int', // SRC name off Month
+         'offYear' => 'Int', // SRC name off Year
+         'DateDischarged' => 'Text', // SRC name Date Discharged
+         'DaysOnSickList' => 'Text', // SRC name Days on sick List
+         'EstDaysOnSickList' => 'Int', // SRC name Est Days on Sick List
+         'DaysAtSeaTillDeath' => 'Int', // SRC name  Days at sea till Death
+         'DaysAtSeaTillDeathOercentageVoyage' => 'Int', // SRC name ays at sea till Death percentage voyage
+         'HowDisposedOf' => 'Text', // SRC name How disposed of
+         'DisposedCode' => 'Int', // SRC name Disposed code
+         'TranscribersRemarks' => 'Text', // SRC name Transcribers remarks
+         'JournalRemarks' => 'Text', // SRC name Journal remarks
+         'Reference' => 'Text', // SRC name Reference
+         'JPEGNo' => 'Text', // SRC name JPEG No
+	 'BatesonNotes' => 'Text' // SRC name Bateson notes
 
    );
 
@@ -96,10 +94,10 @@ class SickList extends Event {
    );
 	
 	
-	function setKnownAsName($NameID){
-		 Debug::show("hefre");
+ function setKnownAsName($NameID){
 		 $this->KnownAs = $NameID;	
-	}
+           
+ }
  	
 	
 
@@ -128,13 +126,12 @@ function onBeforeWrite() {
 function removeFields( $fields) {
 		  
 			 
-			 //$fields = parent::getCMSFields();
+			 $fields = parent::getCMSFields();
 		 
 	 		//$fields->removeByName('Event'); //We remove this event at this stage because in actual data it's harded wired. 
 			//$fields->removeByName('Relationships');
 			//$fields->removeByName('Groups');
-		    //$fields->removeByName('SourceFile');
-
+		        //$fields->removeByName('SourceFile');
 				
 			  return $fields;
    }
