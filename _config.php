@@ -4,7 +4,7 @@ global $project;
 $project = 'sicklist';
 
 global $database;
-$database = ' fs_sicklist';
+$database = 'fs_sicklist';
 
 require_once('conf/ConfigureFromEnv.php');
 
