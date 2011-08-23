@@ -7,10 +7,10 @@ class SickList extends Events {
    
     static $db = array(
 	 'LineNumber' => 'Int', 
-	 'SickListId' => 'Int',
+	 'SickListIdent' => 'Int',
 	 'Ship' => 'Text',
          'VoyageNumber' => 'Int', // SRC name  Voyage Number
-         'VoyageID =>' => 'Text', // SRC name Voyage ID
+         'VoyageIdent' => 'Text', // SRC name Voyage ID
          'TransportGender' => 'Int', // SRC name  Transport Gender  
          'DayOfDeparture' => 'Int', // SRC name Day of Departure
          'MonthOfDeparture' => 'Int', // SRC name Month of Departure
@@ -50,7 +50,7 @@ class SickList extends Events {
          'offYear' => 'Int', // SRC name off Year
          'DateDischarged' => 'Text', // SRC name Date Discharged
          'DaysOnSickList' => 'Text', // SRC name Days on sick List
-         'EstDaysOnSickList' => 'Int', // SRC name Est Days on Sick List
+         'EstDaysOnSickList' => 'Float', // SRC name Est Days on Sick List
          'DaysAtSeaTillDeath' => 'Int', // SRC name  Days at sea till Death
          'DaysAtSeaTillDeathOercentageVoyage' => 'Int', // SRC name ays at sea till Death percentage voyage
          'HowDisposedOf' => 'Text', // SRC name How disposed of
@@ -82,21 +82,18 @@ class SickList extends Events {
 		
 
   static $searchable_fields = array(
-       'KnownAs.Name',
+       'Name'
    );
  
    
 
 									
     static $summary_fields = array(
-     'KnownAs.Name','KnownAs.ID','ID'
+     'Name'
    );
 	
 	
- function setKnownAsName($NameID){
-		 $this->KnownAs = $NameID;	
-           
- }
+ 
  	
 	
 
@@ -135,10 +132,6 @@ function removeFields( $fields) {
 			  return $fields;
    }
 		
-			
-			
-	
-
 
  
 };
