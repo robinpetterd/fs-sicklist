@@ -1,9 +1,9 @@
 <?php 
 
-class SickList extends Event {
+class SickList extends Events {
  
    //static $api_access = true;
-   function canView() { return true; }
+  //function canView() { return true; }
    
     static $db = array(
 	 'LineNumber' => 'Int', 
@@ -17,7 +17,6 @@ class SickList extends Event {
          'YearOfDeparture' => 'Int', // SRC name Year of Departure
          'PeriodOfDeparture' => 'Text', // SRC name Period of Departure
          'DateSailedBateson' => 'Text', // SRC name Date Sailed (Bateson)
-         'SickListID' => 'Text', // SRC name   Sick List ID 
          'BatesonArrivalDay' => 'Int', // SRC name  Bateson Arrival Day
          'BatesonArrivalMonth' => 'Int', // SRC name Bateson Arrival Mont
          'BatesonArrivalYear' => 'Int', // SRC name Bateson Arrival Year 
@@ -67,7 +66,7 @@ class SickList extends Event {
 
    static $has_one = array(
    	
-          'Vogage' => 'Vogage', // TODO - build this data type
+         // 'Vogage' => 'Vogage', // TODO - build this data type
 	
    );
    
@@ -136,6 +135,7 @@ function removeFields( $fields) {
 			  return $fields;
    }
 		
+			
 			
 	
 
