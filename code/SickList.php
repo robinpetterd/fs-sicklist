@@ -37,7 +37,7 @@ class SickList extends Events {
          'OnYear' => 'Int', // SRC name  On Year
          'DateEnteredOnSickList' => 'Text', // SRC name  Date Entered on Sick List
          'DaysLapseSinceSailing' => 'Int', // SRC name Days lapse since sailing
-         'PercentageVoyageLapsed' => 'Int', // SRC name  Percentage voyage lapsed
+         'PercentageVoyageLapsed' => 'Float', // SRC name  Percentage voyage lapsed
          'Forenames' => 'Text', // SRC name Forenames
          'LastName' => 'Text', // SRC name Name
          'Age' => 'Text', // SRC name Age TODO - might need to add a field that deals with this as float
@@ -48,7 +48,7 @@ class SickList extends Events {
          'Trade' => 'Text', // SRC name Trade
          'DiseaseOrWound' => 'Text', // SRC name Disease or Wound
          'DiagnosticInterpretation' => 'Text', // SRC name Diagnostic Interpretation
-          'DiseaseClassification1' => 'Text', // SRC name Disease Classification 1
+         'DiseaseClassification1' => 'Text', // SRC name Disease Classification 1
 
          'Disease1Code' => 'Text', // SRC name Disease 1 Code
          'DiseaseClassification2' => 'Text', // SRC name Disease Classification 2
