@@ -1,11 +1,14 @@
 <?php 
 
-class SickList extends Events {
+class SickList extends DataObject {
  
    //static $api_access = true;
   //function canView() { return true; }
-   
+    static $default_sort = "\"Sort\"";
+
     static $db = array(
+        		"Sort" => "Int",
+
 	 'LineNumber' => 'Int', 
 	 'SickListIdent' => 'Int',
 	 'Ship' => 'Text',
@@ -20,7 +23,7 @@ class SickList extends Events {
          'BatesonArrivalDay' => 'Int', // SRC name  Bateson Arrival Day
          'BatesonArrivalMonth' => 'Int', // SRC name Bateson Arrival Mont
          'BatesonArrivalYear' => 'Int', // SRC name Bateson Arrival Year 
-         'BatesonArrivalDate' => 'Int', // SRC name  Bateson Arrival Date
+         'BatesonArrivalDate' => 'Text', // SRC name  Bateson Arrival Date
          'LengthVoyage' => 'Int',  // SRC name Length Voyage
          'SeasonSailed' => 'Text', // SRC name Season sailed TODO - might need to NORMALISE
          'SeasonCode' => 'Text', // SRC name Season Code 
@@ -41,7 +44,6 @@ class SickList extends Events {
          'Trade' => 'Text', // SRC name Trade
          'DiseaseOrWound' => 'Text', // SRC name Disease or Wound
          'DiagnosticInterpretation' => 'Text', // SRC name Diagnostic Interpretation
-         'DiseaseClassification1' => 'Text', // SRC name Disease Classification 1
          'Disease1Code' => 'Text', // SRC name Disease 1 Code
          'DiseaseClassification2' => 'Text', // SRC name Disease Classification 2
          'Disease2Code' => 'Text', // SRC name Disease 2 Code
@@ -60,7 +62,7 @@ class SickList extends Events {
          'Reference' => 'Text', // SRC name Reference
          'JPEGNo' => 'Text', // SRC name JPEG No
 	 'BatesonNotes' => 'Text' // SRC name Bateson notes
-
+         
    );
 
 
@@ -86,10 +88,9 @@ class SickList extends Events {
    );
  
    
-
 									
-    static $summary_fields = array(
-     'Name'
+   static $summary_fields = array(
+     'Name','DiseaseOrWound','DaysLapseSinceSailing'
    );
 	
 	
