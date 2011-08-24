@@ -1,16 +1,20 @@
 <?php 
 
-class SickList extends DataObject {
+class SickList extends Events {
  
    //static $api_access = true;
   //function canView() { return true; }
     static $default_sort = "\"Sort\"";
+    
+    static $indexes = array("fulltext (DiseaseOrWound,Forenames,LastName)");
 
+
+            
     static $db = array(
-        		"Sort" => "Int",
+          "Sort" => "Int",
 
 	 'LineNumber' => 'Int', 
-	 'SickListIdent' => 'Int',
+	 'SickListIdent' => 'Text',
 	 'Ship' => 'Text',
          'VoyageNumber' => 'Int', // SRC name  Voyage Number
          'VoyageIdent' => 'Text', // SRC name Voyage ID
@@ -35,7 +39,7 @@ class SickList extends DataObject {
          'DaysLapseSinceSailing' => 'Int', // SRC name Days lapse since sailing
          'PercentageVoyageLapsed' => 'Int', // SRC name  Percentage voyage lapsed
          'Forenames' => 'Text', // SRC name Forenames
-         'Name' => 'Text', // SRC name Name
+         'LastName' => 'Text', // SRC name Name
          'Age' => 'Text', // SRC name Age TODO - might need to add a field that deals with this as float
          'NoOnTheList' => 'Int', // SRC name No. on the list
          'CaseNotes' => 'Text', // SRC name Case Notes
@@ -44,6 +48,8 @@ class SickList extends DataObject {
          'Trade' => 'Text', // SRC name Trade
          'DiseaseOrWound' => 'Text', // SRC name Disease or Wound
          'DiagnosticInterpretation' => 'Text', // SRC name Diagnostic Interpretation
+          'DiseaseClassification1' => 'Text', // SRC name Disease Classification 1
+
          'Disease1Code' => 'Text', // SRC name Disease 1 Code
          'DiseaseClassification2' => 'Text', // SRC name Disease Classification 2
          'Disease2Code' => 'Text', // SRC name Disease 2 Code
@@ -84,14 +90,14 @@ class SickList extends DataObject {
 		
 
   static $searchable_fields = array(
-       'Name'
-   );
+       'LineNumber','Name','DiseaseOrWound','DaysLapseSinceSailing'
+  );
  
    
 									
-   static $summary_fields = array(
-     'Name','DiseaseOrWound','DaysLapseSinceSailing'
-   );
+  static $summary_fields = array(
+     'LineNumber', 'Name','DiseaseOrWound','DaysLapseSinceSailing'
+  );
 	
 	
  

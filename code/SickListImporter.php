@@ -7,6 +7,7 @@ class SickListImporter  extends CsvBulkLoader {
    public $columnMap = array(
  	
 	'Line Number'=> 'LineNumber',
+        'Sick List ID'=> 'SickListIdent',
 	'Ship' => 'Ship',
         'Voyage Number' => 'VoyageNumber',
         'Voyage ID'     => 'VoyageIdent',  
@@ -31,9 +32,9 @@ class SickListImporter  extends CsvBulkLoader {
         'Days lapse since sailing' => 'DaysLapseSinceSailing',  
         'Percentage voyage lapsed' => 'PercentageVoyageLapsed',  
         'Forenames' => 'Forenames' ,
-        'Name' => 'Name',
+        'Name' => 'LastName',
         'Age'=> 'Age',  
-        'No. on the list' => 'NoOnTheList',
+        'No on the list' => 'NoOnTheList',
         'Case Notes' => 'CaseNotes',  
         'Quality' => 'Quality',
         'Status Code' => 'StatusCode', 
@@ -57,10 +58,9 @@ class SickListImporter  extends CsvBulkLoader {
         'Transcribers remarks' => 'TranscribersRemarks',  
         'Journal remarks' => 'JournalRemarks',  
         'Reference' => 'Reference',  
-        'JPEG No'=> 'JPEGNo', 
-	'Bateson notes' => 'BatesonNotes' 
+        'JPEG'=> 'JPEGNo', 
+	'Bateson notes' => 'BatesonNotes', 
       
-  
    );
    
  
