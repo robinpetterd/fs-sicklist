@@ -14,6 +14,7 @@ class ConvictVogageImporter  extends CsvBulkLoader {
         'Date arrived'=> 'DateArrived' , // SRC name   Date arrived
         'Colony bound for'=> 'ColonyBoundFor' , // SRC name  Colony bound for
         'Ship'=> 'Ship', // SRC name  Ship 
+       //'Ship'=> 'Name', // SRC name  Ship 
         'Rig'=> 'Rig', // SRC name  Rig 
         'Ton'=> 'Ton', // SRC name   Ton
 	'Built'=> 'Built', // SRC name Built 

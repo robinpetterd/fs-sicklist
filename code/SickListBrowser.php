@@ -15,9 +15,14 @@
         
         public function getFacetableFields() {
             return array(
-                'Forenames' => 'Fore Names', 
-                'DiseaseOrWound' => 'Disease or Wound',
-                'DiagnosticInterpretation' => 'Diagnostic Interpretation'
+                'YearOfDeparture' => 'Year Of Departure', 
+                'Diseases.Name' => 'Diseases',
+                'Season.Name' => 'Season',
+                'Status.Name' => 'Status',
+                'Gender.Name'=> 'Gender'
+               
+                
+                
             );
          }
          

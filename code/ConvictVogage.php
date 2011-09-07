@@ -1,18 +1,15 @@
 <?php 
 
-class ConvictVogage extends Vogage {
+class ConvictVogage extends DataObject {
  
    //static $api_access = true;
   //function canView() { return true; }
     static $default_sort = "\"Sort\"";
     
     static $indexes = array("fulltext (Ship)");
-
-
-            
     static $db = array(
+         
             "Sort" => "Int",
-            
             'Order'=>'Int', // SRC name Order
             'VoyageIdent'=>'Text', // SRC name    Voyage ID
             'YearArrived'=>'Int', // SRC name  Year Arrived 
@@ -24,7 +21,7 @@ class ConvictVogage extends Vogage {
             'Rig'=>'Text', // SRC name  Rig 
             'Ton'=>'Int', // SRC name   Ton
             'Built'=>'Text', // SRC name Built 
-            'Year Built'=>'Text', // SRC name Year Built
+            'YearBuilt'=>'Text', // SRC name Year Built
             'Age'=>'Int', // SRC name Age 
             'Class'=>'Text', // SRC name Class
             'Division'=>'Int', // SRC name  Division
@@ -37,34 +34,40 @@ class ConvictVogage extends Vogage {
             'Departed'=>'Text', // SRC name Departed 
             'Route'=>'Text', // SRC name Route
             'Days'=>'Int', // SRC name Days
-            'Notes'=>'Text' // SRC name Notes
+            'Notes'=>'Text',  // SRC name Notes
+            
+             'Name' => "Text",
    );
 
 
    static $has_one = array(
-   	
-         // 'Vogage' => 'Vogage', // TODO - build this data type
+       
 	
    );
    
    static $has_many = array(
+       
+       
    );	  
    	
 	
     static $many_many = array(	
+        
+          'Sick' => 'SickList'
+
 
 	);
 	
 		
 
   static $searchable_fields = array(
-       'Ship'
+       'Ship','VoyageIdent'
   );
  
    
 									
   static $summary_fields = array(
-      'Ship'
+      'Ship','VoyageIdent'
   );
 	
 	

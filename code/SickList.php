@@ -1,6 +1,6 @@
 <?php 
 
-class SickList extends Events {
+class SickList extends DataObject {
  
    //static $api_access = true;
   //function canView() { return true; }
@@ -12,6 +12,8 @@ class SickList extends Events {
             
     static $db = array(
           "Sort" => "Int",
+        
+          "Name" => "Text",
 
 	 'LineNumber' => 'Int', 
 	 'SickListIdent' => 'Text',
@@ -32,7 +34,7 @@ class SickList extends Events {
          'SeasonSailed' => 'Text', // SRC name Season sailed TODO - might need to NORMALISE
          'SeasonCode' => 'Text', // SRC name Season Code 
          'Order' => 'Int', // SRC name Order
-         'OnDay' => 'Int', // SRC name On Day
+         'OnDay' => 'Int', // SRC name On Day   
          'OnMonth' => 'Int',// SRC name On Month
          'OnYear' => 'Int', // SRC name  On Year
          'DateEnteredOnSickList' => 'Text', // SRC name  Date Entered on Sick List
@@ -48,10 +50,10 @@ class SickList extends Events {
          'Trade' => 'Text', // SRC name Trade
          'DiseaseOrWound' => 'Text', // SRC name Disease or Wound
          'DiagnosticInterpretation' => 'Text', // SRC name Diagnostic Interpretation
-         'DiseaseClassification1' => 'Text', // SRC name Disease Classification 1
+         'DiseaseClassification1' => 'Text', // SRC name Disease Classification 1 LINKAGE - gets mapped to Disease
 
          'Disease1Code' => 'Text', // SRC name Disease 1 Code
-         'DiseaseClassification2' => 'Text', // SRC name Disease Classification 2
+         'DiseaseClassification2' => 'Text', // SRC name Disease Classification 2 LINKAGE - gets mapped to Disease
          'Disease2Code' => 'Text', // SRC name Disease 2 Code
          'offDay' => 'Int', // SRC name off Day
          'offMonth' => 'Int', // SRC name off Month
@@ -72,10 +74,12 @@ class SickList extends Events {
    );
 
 
-   static $has_one = array(
-   	
-         // 'Vogage' => 'Vogage', // TODO - build this data type
-	
+     static $has_one = array(
+   	 'Season' => 'Season',
+         'Gender' => 'Gender',
+         'Status' => 'Role',
+         'Vogage' => 'ConvictVogage'
+
    );
    
    static $has_many = array(
@@ -83,20 +87,20 @@ class SickList extends Events {
    	
 	
     static $many_many = array(	
-
+           'Diseases' => 'Disease'
 	);
 	
 
 		
 
   static $searchable_fields = array(
-       'LineNumber','Name','DiseaseOrWound','DaysLapseSinceSailing'
+       'LineNumber','Name','Season.Name','Diseases.Name','Gender.Name','DiseaseOrWound','DaysLapseSinceSailing'
   );
  
    
 									
   static $summary_fields = array(
-     'LineNumber', 'Name','DiseaseOrWound','DaysLapseSinceSailing'
+     'LineNumber', 'Ship','Season.Name','DateSailedBateson','BatesonArrivalDate','Diseases.Name','Gender.Name','DiseaseOrWound','DaysLapseSinceSailing'
   );
 	
 	

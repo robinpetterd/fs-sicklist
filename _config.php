@@ -22,4 +22,13 @@ i18n::set_locale('en_US');
 
 Director::addRules(50, array('explore/$Action/$ID/$Name' => 'SickListBrowser'));
 
+Director::addRules(50, array('sl-linkages/$Action/$ID/$Name' => 'SickListLinkages'));
+
+//Object::add_extension('Page_Controller', 'PodcastController');
+
+
+    
+
+
+
 
