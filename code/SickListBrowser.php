@@ -1,5 +1,5 @@
 <?php    
- class SickListBrowser extends FacetedListingController {
+ class SickListBrowser extends SapeListingController {
         
         public function getItemClass() {
             return 'SickList';
