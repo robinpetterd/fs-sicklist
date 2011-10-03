@@ -24,11 +24,10 @@ Director::addRules(50, array('explore/$Action/$ID/$Name' => 'SickListBrowser'));
 
 Director::addRules(50, array('sl-linkages/$Action/$ID/$Name' => 'SickListLinkages'));
 
-//Object::add_extension('Page_Controller', 'PodcastController');
 
-
+//Validator::set_javascript_validation_handler('none');
     
 
 
-
+//error_reporting(E_ALL);
 

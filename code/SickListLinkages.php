@@ -12,7 +12,8 @@ class  SickListLinkages extends Controller  {
         
         
 function build() {
-			
+             
+    
              echo 'about to start build links';
              $currentMember = Member::currentUser();
                if( Permission::checkMember($currentMember, 'ADMIN')) {
@@ -35,6 +36,8 @@ function build() {
                    }
 
 		 } 
+                 
+                   echo '######### Done ############';
               }
   
  
@@ -58,7 +61,8 @@ function  TidyVogages() {
     
        $Vogages = DataObject::get('ConvictVogage');  
        foreach($Vogages as $Vogage) {
-            echo 'working on ' . $Vogage->SickListIdent . '<br>';
+          
+           //echo 'working on ' . $Vogage->SickListIdent . '<br>';
            
            $Vogage->Name = $Vogage->Ship;
            $Vogage->write();
@@ -107,7 +111,12 @@ function  TidyVogages() {
             break;	
         case 11:
             $searchRole = 'No Data';
+            break;
+        
+        case '':
+            $searchRole = 'No Data';
             break;	
+        
 
     }       
     
@@ -175,7 +184,7 @@ function  TidyVogages() {
                 if($Gender) {
                   $entry->GenderID = $Gender->ID; 
                   $entry->write();
-                 // echo 'wrote new Gender ' . $Gender->Name . ' <br>';
+                  echo 'wrote new Gender ' . $Gender->Name . ' <br>';
                   
                 } else {
                     
@@ -186,7 +195,7 @@ function  TidyVogages() {
                     // sets property on object
                     $Gender->write(); // writes row to database'
                     
-                   // echo 'made new Gender ' . $searchGender . ' <br>';
+                    echo 'made new Gender ' . $searchGender . ' <br>';
                     
                     $newGender = DataObject::get_one("Gender", "Name = '" . $searchGender ."'" );
                     $entry->GenderID =  $newGender->ID; 
@@ -298,7 +307,7 @@ function  TidyVogages() {
             //Debug::show($sl);
             
             //Debug::show('<a href="build">Build All</a>');
-            //echo  '<a href="build">Build All - Sick List</a>';
+            echo  'about to link disease';
      
                                     
                  $diseaseClassArray = array ($entry->DiseaseClassification1, $entry->DiseaseClassification2);
