@@ -21,6 +21,9 @@ i18n::set_locale('en_US');
 //SiteTree::enable_nested_urls();
 
 Director::addRules(50, array('explore/$Action/$ID/$Name' => 'SickListBrowser'));
+Director::addRules(50, array('view/$Action/$ID/$Name' => 'SickListViewer'));
+
+
 
 Director::addRules(50, array('sl-linkages/$Action/$ID/$Name' => 'SickListLinkages'));
 
