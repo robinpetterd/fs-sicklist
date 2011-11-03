@@ -25,7 +25,7 @@ Director::addRules(50, array('explore/$Action/$ID/$Name' => 'SickListBrowser'));
 Director::addRules(50, array('sl-linkages/$Action/$ID/$Name' => 'SickListLinkages'));
 
 
-//Validator::set_javascript_validation_handler('none');
+Validator::set_javascript_validation_handler('none');
     
 
 

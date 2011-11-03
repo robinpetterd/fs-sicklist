@@ -78,7 +78,9 @@ class SickList extends DataObject {
    	 'Season' => 'Season',
          'Gender' => 'Gender',
          'Status' => 'Role',
-         'Vogage' => 'ConvictVogage'
+         'Vogage' => 'ConvictVogage',
+         'Disposed' => 'Disposed'
+
 
    );
    
@@ -94,13 +96,13 @@ class SickList extends DataObject {
 		
 
   static $searchable_fields = array(
-       'LineNumber','Name','YearOfDeparture','Season.Name','Diseases.Name','Gender.Name','DiseaseOrWound','PercentageVoyageLapsed','DaysLapseSinceSailing'
+       'LineNumber','Name','YearOfDeparture','Season.Name','Diseases.Name','Disposed.Name','Gender.Name','DiseaseOrWound','PercentageVoyageLapsed','DaysLapseSinceSailing'
   );
  
    
 									
   static $summary_fields = array(
-     'LineNumber', 'Forenames','LastName','Ship','Season.Name','DateSailedBateson','BatesonArrivalDate','Diseases.Name','Gender.Name','DiseaseOrWound','PercentageVoyageLapsed'
+     'Forenames','LastName','Ship','Season.Name','DateSailedBateson','BatesonArrivalDate','DiseaseOrWound','PercentageVoyageLapsed'
   );
 	
 	

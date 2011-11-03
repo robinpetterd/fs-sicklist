@@ -3,7 +3,7 @@
 class SickListAdmikn extends ModelAdmin {
    
   public static $managed_models = array(
-      'SickList','ConvictVogage','Disease','Season'
+      'SickList','ConvictVogage','Disease','Season','Disposed'
    );
   
   static $model_importers = array(

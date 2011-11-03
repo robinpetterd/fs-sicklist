@@ -24,8 +24,10 @@
         public function getFacetableFields() {
             return array(
                 'YearOfDeparture' => 'Year Of Departure', 
-                'PercentageVoyageLapsed' => 'PercentageVoyageLapsed', 
+                'PeriodOfDeparture' => 'PeriodOfDeparture',
+                'Vogage.Name' => 'Vogage',
                 'Diseases.Name' => 'Diseases',
+                'Disposed.Name' => 'Disposed.',
                 'Season.Name' => 'Season',
                 'Status.Name' => 'Status',
                 'Gender.Name'=> 'Gender'
@@ -34,6 +36,26 @@
                 
             );
          }
+         
+      /* public function getListingFields() {
+         return array(
+                      'Forenames',
+                      'LastName',
+                      'Ship',
+                      'Season.Name',
+                      'DateSailedBateson',
+                      'BatesonArrivalDate',
+                      'Diseases.Name',
+                      'Gender.Name',
+                      'DiseaseOrWound',
+                      'PercentageVoyageLapsed'
+
+          );
+     
+     }*/
+
+        
+        
          
         public function getFulltextFields() {
             return array('DiseaseOrWound','Forenames','LastName');

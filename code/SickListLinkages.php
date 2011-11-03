@@ -22,12 +22,14 @@ function build() {
                    
                    foreach($sl as $entry) {
                        echo 'working on ' . $entry->SickListIdent . '<br>'; 
-
+                       
+                       $this->LinkDisposed($entry); 
+                       
                        $this->LinkDiseases($entry); 
                        $this->LinkSeasons($entry);
                        $this->LinkGender($entry);
                        $this->LinkRole($entry);
-                       
+                      
                        $this->LinkVogage($entry);
                        $this->TidyVogages($entry);
 
@@ -57,6 +59,7 @@ function index() {
  * Does any post processing that is needed 
  */
 
+            
 function  TidyVogages() {
     
        $Vogages = DataObject::get('ConvictVogage');  
@@ -80,7 +83,7 @@ function  TidyVogages() {
  
  function LinkRole($entry) {
      
-    //Organise the status code in the string name to work with
+    //Organise the status code in the   string name to work with
     switch ($entry->StatusCode) {
         case 1:
             $searchRole = 'Convict';
@@ -163,6 +166,54 @@ function  TidyVogages() {
             }
           
   }
+  
+  function LinkDisposed($entry) {
+      
+          if($entry->DisposedCode == 0) return; // just get out this we don't need to this  
+          
+          if($entry->DisposedCode == 1) $SearchDisposedCode = 'Died';
+          if($entry->DisposedCode == 2) $SearchDisposedCode = 'Evidence suggests relanded (did not arrive in Australia)';
+          if($entry->DisposedCode == 3) $SearchDisposedCode = 'Sent to hospital on arrival in the Australian colonies';
+          
+          if ($entry->DisposedID  ) {
+                ///echo 'Disposed Code already found alreay found<br>';
+            } else {
+               // echo 'no Gender found<br>'; 
+                
+                //Debug::show($entry);
+                //see if that season exist already 
+                
+                $DisposedCode = DataObject::get_one("Disposed", "Name = '" . $SearchDisposedCode  ."'" );
+                
+                
+                if($DisposedCode) {
+                  $entry->DisposedID = $DisposedCode->ID; 
+                  $entry->write();
+                  echo 'wrote new Disposed ' . $DisposedCode->Name . ' <br>';
+                  
+                } else {
+                    
+                    //maket new object
+                    $Disposed = new Disposed();
+                    $Disposed->Name =  $SearchDisposedCode;
+                    
+                    // sets property on object
+                    $Gender->write(); // writes row to database'
+                    
+                    echo 'made new Gender ' .  $SearchDisposedCode . ' <br>';
+                    
+                    $DisposedCode = DataObject::get_one("Disposed", "Name = '" . $SearchDisposedCode  ."'" );
+                    $entry->write();
+                     echo 'wrote new Disposed ' . $DisposedCode->Name . ' <br>';
+                    
+                   // echo 'wrote new gender ' . $searchGender . ' <br>';
+
+                }
+
+                                             
+            }
+          
+  }  
   
   
  
