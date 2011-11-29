@@ -1,16 +1,20 @@
 <?php    
  class SickListBrowser extends SapeListingController {
         
+ 	protected $itemController = 'SickListViewer';
+        
+        public $ItemsPerPage = 100;
+        
         public function getItemClass() {
             return 'SickList';
         }
         
         public function getDefaultItemsPerPage() {
-		return 1000;
+		return $this->ItemsPerPage;
 	}
         
         public function getAllowedItemsPerPage() {
-		return array(1000);
+		return array(100,200,500,100);
 	}
         
         

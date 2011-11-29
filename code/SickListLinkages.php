@@ -25,13 +25,13 @@ function build() {
                        
                        $this->LinkDisposed($entry); 
                        
-                       $this->LinkDiseases($entry); 
-                       $this->LinkSeasons($entry);
-                       $this->LinkGender($entry);
-                       $this->LinkRole($entry);
+                        $this->LinkDiseases($entry); 
+                       //$this->LinkSeasons($entry);
+                       //$this->LinkGender($entry);
+                       //$this->LinkRole($entry);
                       
-                       $this->LinkVogage($entry);
-                       $this->TidyVogages($entry);
+                        //$this->LinkVogage($entry);
+                       //$this->TidyVogages($entry);
 
 
 
@@ -268,10 +268,10 @@ function  TidyVogages() {
         
           
           if ($entry->VogageID != 0) {
-                //echo 'Vogage alreay found<br>';
+                echo 'Vogage alreay found<br>';
             } else {
                 
-                Debug::show($entry->VoyageIdent);
+                //Debug::show($entry->VoyageIdent);
                 //see if that season exist already 
                 $BatonsonVogage = DataObject::get_one("ConvictVogage", "VoyageIdent = '" . $entry->VoyageIdent ."'" );
                 //Debug::show($BatonsonVogage);
@@ -359,9 +359,136 @@ function  TidyVogages() {
             
             //Debug::show('<a href="build">Build All</a>');
             echo  'about to link disease';
-     
-                                    
-                 $diseaseClassArray = array ($entry->DiseaseClassification1, $entry->DiseaseClassification2);
+           
+           $diseaseClassCodes = array ($entry->Disease1Code, $entry->Disease2Code);
+           $diseaseClassArray = array ();
+
+           $searchDisease = '';
+            
+           foreach($diseaseClassCodes as $code) {
+                switch ($code) {
+                    
+                    case     1:
+                         $searchDisease = 'Accident';
+                        break;
+                    case     2:
+                         $searchDisease = 'Convulsions and teething';
+                        break;
+                    case     3:
+                        $searchDisease = 'Debility and marasmus';
+                        break;
+                    case     4:
+                        $searchDisease = 'Diarrhoea and dysentery';
+                        break;
+                    case     5:
+                        $searchDisease = 'Diseases of the blood and blood forming organs';
+                        break;
+                    case     6:
+                        $searchDisease = 'Diseases of the circulatory system';
+                        break;
+                    case     7:
+                        $searchDisease = 'Diseases of the digestive system';
+                        break;
+                    case     8:
+                        $searchDisease = 'Diseases of the eye and ear';
+                        break;
+                    case     9:
+                        $searchDisease = 'Diseases of the geniourinary system';
+                        break;
+                    case     10:
+                        $searchDisease = 'Diseases of the musculoskeletal system';
+                        break;
+                    case     11:
+                        $searchDisease = 'Diseases of the nervous system';
+                        break;
+                    case     12:
+                        $searchDisease = 'Diseases of the respiratory system';
+                        break;
+                    case     13:
+                       $searchDisease = 'Diseases of the skin and subcutaneous tissue';
+                        break;
+                    case     14:
+                        $searchDisease = 'Endocrine, deficiency and metabolic disorders';
+                        break;
+                    case     15:
+                        $searchDisease = 'Influenza';
+                        break;
+                    case     16:
+                        $searchDisease = 'Malingering';
+                        break;
+                    case     17:
+                       $searchDisease = 'Measles';
+                        break;
+                    case     18:
+                        $searchDisease = 'Mental and behavioural disorders';
+                        break;
+                    case     19:
+                        $searchDisease = 'Nausea';
+                        break;
+                    case     20:
+                        $searchDisease = 'Neoplasm';
+                        break;
+                    case     21:
+                        $searchDisease = 'Old age and decay';
+                        break;
+                    case     22:
+                       $searchDisease = 'Other fever';
+                        break;
+                    case      23:
+                        $searchDisease = 'Other infectious diseases';
+                        break;
+                    case     24:
+                        $searchDisease = 'Other tuberculosis';
+                        break;
+                    case     25:
+                        $searchDisease = 'Paralysis';
+                        break;
+                    case     26:
+                        $searchDisease = 'Parasitic disease';
+                        break;
+                    case     27:
+                        $searchDisease = 'Preganancy, childbirth and the puerperium';
+                        break;
+                    case     28:
+                        $searchDisease = 'Respiratory tuberculosis';
+                        break;
+                    case     29:
+                        $searchDisease = 'Scarlet fever';
+                        break;
+                    case     30:
+                        $searchDisease = 'Sexually transmitted diseases';
+                        break;
+                    case     31:
+                        $searchDisease = 'Suicide';
+                        break;
+                    case     32:
+                        $searchDisease = 'Unclassifiable';
+                        break;
+                    case      33:
+                        $searchDisease = 'Unknown';
+                        break;
+                    case     34:
+                        $searchDisease = 'Unspecified natural causes';
+                        break;
+                    case     35:
+                        $searchDisease = 'Vaccinated';
+                        break;
+                    case     36:
+                        $searchDisease = 'Whooping cough';
+                        break;
+                    
+            
+
+                }
+                //now add the teh array 
+                
+                if($searchDisease != '') {
+                     array_push( $diseaseClassArray, $searchDisease );
+                }                      
+           }
+    
+                 //$diseaseClassArray = array ($entry->DiseaseClassification1, $entry->DiseaseClassification2);
+                 //Debug::show($diseaseClassArray);
                  
                   foreach($diseaseClassArray as $diseaseClass) {
                        
@@ -372,11 +499,9 @@ function  TidyVogages() {
 
                              if($DiseaseObject) {
                                  //yes we have the Disease already so need to save that the data object
-
                                 
                                 $existingDiseases = $entry->Diseases();
                                 //Debug::show($existingDiseases); 
-                                
                                 
                                 //$entry->Diseases->add($DiseaseObject);
                                 $existingDiseases->add($DiseaseObject);
@@ -386,8 +511,7 @@ function  TidyVogages() {
                                  $entry->write(); // writes row to database
 
                                  //Debug::show($entry);
-                                 echo 'added ' . $DiseaseObject->Name . '<br>';
-
+                                 echo 'added ' . $DiseaseObject->Name . ' to ' . $entry->LineNumber . '<br>';
 
 
 

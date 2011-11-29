@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+
+.box
+{
+
+  width: 150px;
+  margin: 10px;
+  float: left;
+  padding:12px;
+  
+  
+  background-color:#6f797c;
+  
+  -webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+  
+  
+
+}
+
+.box a:link, .box a:visited
+{
+  color:#e0e0e0; 
+  text-decoration: none;
+  
+}
+
+
+
+.box .about
+{
+  padding:12px;
+  
+
+}
+
+.box .about a:link h3, .box .about a:visited h3 
+{
+  color:#e0e0e0;
+  text-decoration: none;
+  padding-top:12px;
+  }
+
+.box .about  a:link.summary
+{
+  color:#e0e0e0; 
+  text-decoration: none;
+  }
+
+
+
+
